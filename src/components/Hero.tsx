@@ -22,11 +22,10 @@ const Hero = ({ onGetStarted }: { onGetStarted: () => void }) => {
             </div>
             
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight">
-              Build Your{" "}
               <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                Perfect Resume
+                CVG
               </span>{" "}
-              in Minutes
+              - Build Your Perfect Resume in Minutes
             </h1>
             
             <p className="text-xl text-muted-foreground max-w-2xl">
@@ -43,13 +42,6 @@ const Hero = ({ onGetStarted }: { onGetStarted: () => void }) => {
               >
                 Get Started Free
                 <ArrowRight className="ml-2 w-5 h-5" />
-              </Button>
-              <Button 
-                variant="outline" 
-                size="lg"
-                className="text-lg"
-              >
-                View Examples
               </Button>
             </div>
             

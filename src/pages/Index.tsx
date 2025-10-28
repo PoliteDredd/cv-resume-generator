@@ -3,11 +3,13 @@ import Hero from "@/components/Hero";
 import Features from "@/components/Features";
 import HowItWorks from "@/components/HowItWorks";
 import ResumeForm, { ResumeData } from "@/components/ResumeForm";
+import ResumePreview from "@/components/ResumePreview";
 import { useToast } from "@/hooks/use-toast";
 
 const Index = () => {
   const { toast } = useToast();
   const [isGenerating, setIsGenerating] = useState(false);
+  const [generatedResume, setGeneratedResume] = useState<ResumeData | null>(null);
   const formRef = useRef<HTMLDivElement>(null);
 
   const handleGetStarted = () => {
@@ -22,12 +24,12 @@ const Index = () => {
       // For now, simulate processing
       await new Promise(resolve => setTimeout(resolve, 2000));
       
+      setGeneratedResume(data);
+      
       toast({
         title: "Resume Generated!",
-        description: "Your professional resume is ready. AI enhancement will be available soon.",
+        description: "Your professional resume is ready.",
       });
-      
-      console.log("Resume data:", data);
     } catch (error) {
       toast({
         title: "Error",
@@ -47,6 +49,9 @@ const Index = () => {
       <div ref={formRef}>
         <ResumeForm onSubmit={handleGenerateResume} isGenerating={isGenerating} />
       </div>
+      {generatedResume && (
+        <ResumePreview data={generatedResume} onClose={() => setGeneratedResume(null)} />
+      )}
     </div>
   );
 };
