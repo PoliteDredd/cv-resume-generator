@@ -58,7 +58,10 @@ const CreateResume = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Navigation activeView="create" onViewChange={(view) => view === "history" && navigate("/history")} />
+      <Navigation activeView="create" onViewChange={(view) => {
+        if (view === "home") navigate("/");
+        if (view === "history") navigate("/history");
+      }} />
       <div className="flex-1">
         <HowItWorks />
         <ResumeForm onSubmit={handleGenerateResume} isGenerating={isGenerating} />

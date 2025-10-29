@@ -12,7 +12,10 @@ const History = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Navigation activeView="history" onViewChange={(view) => view === "create" && navigate("/")} />
+      <Navigation activeView="history" onViewChange={(view) => {
+        if (view === "home") navigate("/");
+        if (view === "create") navigate("/create-resume");
+      }} />
       <div className="flex-1">
         <ResumeHistory onViewResume={setGeneratedResume} />
       </div>

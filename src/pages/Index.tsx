@@ -49,7 +49,10 @@ const Index = () => {
 
   return (
     <div className="min-h-screen flex flex-col">
-      <Navigation activeView="create" onViewChange={(view) => view === "history" && navigate("/history")} />
+      <Navigation activeView="home" onViewChange={(view) => {
+        if (view === "history") navigate("/history");
+        if (view === "create") navigate("/create-resume");
+      }} />
       <div className="flex-1">
         <Hero onGetStarted={handleGetStarted} />
         <Features />

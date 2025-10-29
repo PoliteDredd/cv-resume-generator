@@ -6,8 +6,8 @@ import { useToast } from "@/hooks/use-toast";
 import { useTheme } from "next-themes";
 
 interface NavigationProps {
-  activeView: "create" | "history";
-  onViewChange: (view: "create" | "history") => void;
+  activeView: "home" | "create" | "history";
+  onViewChange: (view: "home" | "create" | "history") => void;
 }
 
 const Navigation = ({ activeView, onViewChange }: NavigationProps) => {
@@ -37,8 +37,11 @@ const Navigation = ({ activeView, onViewChange }: NavigationProps) => {
           </h1>
           <div className="flex items-center gap-2">
             <Button
-              variant="ghost"
-              onClick={() => navigate("/")}
+              variant={activeView === "home" ? "default" : "ghost"}
+              onClick={() => {
+                navigate("/");
+                onViewChange("home");
+              }}
             >
               <Home className="w-4 h-4 mr-2" />
               Home
