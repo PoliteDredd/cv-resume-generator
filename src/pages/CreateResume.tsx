@@ -2,17 +2,16 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import HowItWorks from "@/components/HowItWorks";
-import ResumeForm, { ResumeData } from "@/components/ResumeForm";
+import ResumeForm from "@/components/ResumeForm";
 import ResumePreview from "@/components/ResumePreview";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
 import { useToast } from "@/hooks/use-toast";
-import type { User } from "@supabase/supabase-js";
+import type { ResumeData } from "@/types/resume";
 
 const CreateResume = () => {
   const { toast } = useToast();
   const navigate = useNavigate();
-  const [user, setUser] = useState<User | null>(null);
   const [isGenerating, setIsGenerating] = useState(false);
   const [generatedResume, setGeneratedResume] = useState<ResumeData | null>(null);
 
@@ -23,7 +22,6 @@ const CreateResume = () => {
       const { data: { user } } = await supabase.auth.getUser();
       if (!user) throw new Error("User not authenticated");
 
-      // Save resume to database
       const { error } = await supabase.from("resumes").insert({
         user_id: user.id,
         full_name: data.fullName,
@@ -33,7 +31,7 @@ const CreateResume = () => {
         summary: data.summary,
         experience: data.experience,
         education: data.education,
-        skills: data.skills,
+        skills: data.technicalSkills,
         template: data.template,
       });
 
