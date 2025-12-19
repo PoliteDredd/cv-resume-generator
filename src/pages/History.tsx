@@ -4,7 +4,7 @@ import ResumeHistory from "@/components/ResumeHistory";
 import ResumePreview from "@/components/ResumePreview";
 import Navigation from "@/components/Navigation";
 import Footer from "@/components/Footer";
-import { ResumeData } from "@/components/ResumeForm";
+import type { ResumeData } from "@/types/resume";
 
 const History = () => {
   const navigate = useNavigate();

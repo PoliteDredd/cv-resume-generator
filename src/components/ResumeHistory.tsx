@@ -4,7 +4,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { FileText, Trash2, Eye } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import { ResumeData } from "./ResumeForm";
+import type { ResumeData } from "@/types/resume";
 import { format } from "date-fns";
 import type { Tables } from "@/integrations/supabase/types";
 
@@ -76,8 +76,15 @@ const ResumeHistory = ({ onViewResume }: ResumeHistoryProps) => {
       summary: resume.summary || "",
       experience: (Array.isArray(resume.experience) ? resume.experience : []) as any[],
       education: (Array.isArray(resume.education) ? resume.education : []) as any[],
-      skills: resume.skills || "",
+      technicalSkills: resume.skills || "",
+      softSkills: "",
+      projects: [],
+      achievements: [],
+      hobbies: "",
+      languages: [],
       template: resume.template as "modern" | "classic",
+      profileImage: null,
+      sectionToggles: { projects: false, achievements: false, hobbies: false, languages: false },
     };
     onViewResume(resumeData);
   };
@@ -133,20 +140,11 @@ const ResumeHistory = ({ onViewResume }: ResumeHistoryProps) => {
               </div>
             </div>
             <div className="flex gap-2">
-              <Button
-                onClick={() => handleView(resume)}
-                variant="outline"
-                size="sm"
-                className="flex-1"
-              >
+              <Button onClick={() => handleView(resume)} variant="outline" size="sm" className="flex-1">
                 <Eye className="w-4 h-4 mr-2" />
                 View
               </Button>
-              <Button
-                onClick={() => handleDelete(resume.id)}
-                variant="destructive"
-                size="sm"
-              >
+              <Button onClick={() => handleDelete(resume.id)} variant="destructive" size="sm">
                 <Trash2 className="w-4 h-4" />
               </Button>
             </div>
