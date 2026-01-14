@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
+import type { Json } from "@/integrations/supabase/types";
 import HowItWorks from "@/components/HowItWorks";
 import ResumeForm from "@/components/ResumeForm";
 import ResumePreview from "@/components/ResumePreview";
@@ -22,18 +23,18 @@ const CreateResume = () => {
       const { data: { user } } = await supabase.auth.getUser();
       if (!user) throw new Error("User not authenticated");
 
-      const { error } = await supabase.from("resumes").insert({
+      const { error } = await supabase.from("resumes").insert([{
         user_id: user.id,
         full_name: data.fullName,
         email: data.email,
         phone: data.phone,
         location: data.location,
         summary: data.summary,
-        experience: data.experience,
-        education: data.education,
+        experience: data.experience as unknown as Json[],
+        education: data.education as unknown as Json[],
         skills: data.technicalSkills,
         template: data.template,
-      });
+      }]);
 
       if (error) throw error;
       
