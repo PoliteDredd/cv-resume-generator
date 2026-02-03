@@ -65,51 +65,41 @@ const ResumePreview = ({ data, onClose }: ResumePreviewProps) => {
 
           <Card className="bg-white text-gray-900 shadow-2xl overflow-hidden" id="resume-preview-content">
             {isModern ? (
-              /* PROFESSIONAL/MODERN TEMPLATE - Enhanced Design */
-              <div className="flex min-h-[800px]">
+              /* PROFESSIONAL/MODERN TEMPLATE - Print-Optimized Design */
+              <div className="flex" style={{ minHeight: '1122px' }}> {/* A4 height at 96dpi */}
                 {/* Left Sidebar - Dark Charcoal */}
-                <div className="w-[280px] bg-gradient-to-b from-slate-800 to-slate-900 text-white p-6 flex flex-col">
+                <div className="w-[220px] bg-gradient-to-b from-slate-800 to-slate-900 text-white p-5 flex flex-col text-[11px]">
                   {/* Profile Photo */}
                   {data.profileImage && (
-                    <div className="mb-6 flex justify-center">
-                      <div className="relative">
-                        <img 
-                          src={data.profileImage} 
-                          alt="Profile" 
-                          className="w-32 h-32 rounded-full object-cover border-4 border-teal-400 shadow-xl" 
-                        />
-                        <div className="absolute inset-0 rounded-full ring-2 ring-teal-400/30 ring-offset-2 ring-offset-slate-800"></div>
-                      </div>
+                    <div className="mb-4 flex justify-center">
+                      <img 
+                        src={data.profileImage} 
+                        alt="Profile" 
+                        className="w-24 h-24 rounded-full object-cover border-3 border-cyan-700 shadow-lg" 
+                      />
                     </div>
                   )}
                   
                   {/* Contact Section */}
-                  <div className="mb-6">
-                    <h3 className="text-teal-400 text-sm font-bold uppercase tracking-widest mb-4 flex items-center gap-2">
-                      <div className="w-8 h-0.5 bg-teal-400"></div>
+                  <div className="mb-4">
+                    <h3 className="text-cyan-600 text-[10px] font-semibold uppercase tracking-wider mb-2 pb-1 border-b border-cyan-700/40">
                       Contact
                     </h3>
-                    <div className="space-y-3 text-sm">
-                      <div className="flex items-center gap-3">
-                        <div className="w-8 h-8 rounded-full bg-teal-400/20 flex items-center justify-center">
-                          <Mail className="w-4 h-4 text-teal-400" />
-                        </div>
-                        <span className="text-gray-300 break-all text-xs">{data.email}</span>
+                    <div className="space-y-1.5">
+                      <div className="flex items-center gap-2">
+                        <Mail className="w-3 h-3 text-cyan-600 flex-shrink-0" />
+                        <span className="text-gray-300 break-all leading-tight">{data.email}</span>
                       </div>
                       {data.phone && (
-                        <div className="flex items-center gap-3">
-                          <div className="w-8 h-8 rounded-full bg-teal-400/20 flex items-center justify-center">
-                            <Phone className="w-4 h-4 text-teal-400" />
-                          </div>
-                          <span className="text-gray-300 text-xs">{data.phone}</span>
+                        <div className="flex items-center gap-2">
+                          <Phone className="w-3 h-3 text-cyan-600 flex-shrink-0" />
+                          <span className="text-gray-300">{data.phone}</span>
                         </div>
                       )}
                       {data.location && (
-                        <div className="flex items-center gap-3">
-                          <div className="w-8 h-8 rounded-full bg-teal-400/20 flex items-center justify-center">
-                            <MapPin className="w-4 h-4 text-teal-400" />
-                          </div>
-                          <span className="text-gray-300 text-xs">{data.location}</span>
+                        <div className="flex items-center gap-2">
+                          <MapPin className="w-3 h-3 text-cyan-600 flex-shrink-0" />
+                          <span className="text-gray-300">{data.location}</span>
                         </div>
                       )}
                     </div>
@@ -117,17 +107,16 @@ const ResumePreview = ({ data, onClose }: ResumePreviewProps) => {
 
                   {/* Education Section in Sidebar */}
                   {data.education.some(e => e.degree) && (
-                    <div className="mb-6">
-                      <h3 className="text-teal-400 text-sm font-bold uppercase tracking-widest mb-4 flex items-center gap-2">
-                        <div className="w-8 h-0.5 bg-teal-400"></div>
+                    <div className="mb-4">
+                      <h3 className="text-cyan-600 text-[10px] font-semibold uppercase tracking-wider mb-2 pb-1 border-b border-cyan-700/40">
                         Education
                       </h3>
-                      <div className="space-y-3">
+                      <div className="space-y-2">
                         {data.education.filter(e => e.degree).map((edu, i) => (
-                          <div key={i} className="border-l-2 border-teal-400/30 pl-3">
-                            <div className="text-white font-medium text-sm">{edu.degree}</div>
-                            <div className="text-teal-400 text-xs">{edu.institution}</div>
-                            <div className="text-gray-400 text-xs mt-1">{edu.year}</div>
+                          <div key={i} className="border-l-2 border-cyan-700/50 pl-2">
+                            <div className="text-white font-medium text-[11px] leading-tight">{edu.degree}</div>
+                            <div className="text-cyan-500 text-[10px]">{edu.institution}</div>
+                            <div className="text-gray-400 text-[9px]">{edu.year}</div>
                           </div>
                         ))}
                       </div>
@@ -136,22 +125,18 @@ const ResumePreview = ({ data, onClose }: ResumePreviewProps) => {
 
                   {/* Technical Skills with Progress Bars */}
                   {data.technicalSkills && (
-                    <div className="mb-6">
-                      <h3 className="text-teal-400 text-sm font-bold uppercase tracking-widest mb-4 flex items-center gap-2">
-                        <div className="w-8 h-0.5 bg-teal-400"></div>
+                    <div className="mb-4">
+                      <h3 className="text-cyan-600 text-[10px] font-semibold uppercase tracking-wider mb-2 pb-1 border-b border-cyan-700/40">
                         Technical Skills
                       </h3>
-                      <div className="space-y-3">
+                      <div className="space-y-1.5">
                         {data.technicalSkills.split(",").slice(0, 6).map((skill, i) => (
                           <div key={i}>
-                            <div className="flex justify-between text-xs mb-1">
-                              <span className="text-gray-300">{skill.trim()}</span>
-                              <span className="text-teal-400">{Math.floor(70 + Math.random() * 25)}%</span>
-                            </div>
-                            <div className="w-full bg-slate-700 rounded-full h-1.5">
+                            <div className="text-gray-300 text-[10px] mb-0.5">{skill.trim()}</div>
+                            <div className="w-full bg-slate-700 rounded-full h-1">
                               <div 
-                                className="bg-gradient-to-r from-teal-400 to-teal-500 h-1.5 rounded-full transition-all"
-                                style={{ width: `${70 + Math.random() * 25}%` }}
+                                className="bg-cyan-600 h-1 rounded-full"
+                                style={{ width: `${75 + (i * 4) % 20}%` }}
                               ></div>
                             </div>
                           </div>
@@ -162,14 +147,13 @@ const ResumePreview = ({ data, onClose }: ResumePreviewProps) => {
 
                   {/* Soft Skills */}
                   {data.softSkills && (
-                    <div className="mb-6">
-                      <h3 className="text-teal-400 text-sm font-bold uppercase tracking-widest mb-4 flex items-center gap-2">
-                        <div className="w-8 h-0.5 bg-teal-400"></div>
+                    <div className="mb-4">
+                      <h3 className="text-cyan-600 text-[10px] font-semibold uppercase tracking-wider mb-2 pb-1 border-b border-cyan-700/40">
                         Soft Skills
                       </h3>
-                      <div className="flex flex-wrap gap-1.5">
+                      <div className="flex flex-wrap gap-1">
                         {data.softSkills.split(",").map((skill, i) => (
-                          <span key={i} className="px-2 py-1 text-xs bg-teal-400/20 text-teal-300 rounded border border-teal-400/30">
+                          <span key={i} className="px-1.5 py-0.5 text-[9px] bg-cyan-700/30 text-cyan-300 rounded">
                             {skill.trim()}
                           </span>
                         ))}
@@ -180,15 +164,14 @@ const ResumePreview = ({ data, onClose }: ResumePreviewProps) => {
                   {/* Languages */}
                   {hasLanguages && (
                     <div className="mt-auto">
-                      <h3 className="text-teal-400 text-sm font-bold uppercase tracking-widest mb-4 flex items-center gap-2">
-                        <div className="w-8 h-0.5 bg-teal-400"></div>
+                      <h3 className="text-cyan-600 text-[10px] font-semibold uppercase tracking-wider mb-2 pb-1 border-b border-cyan-700/40">
                         Languages
                       </h3>
-                      <div className="space-y-2">
+                      <div className="space-y-1">
                         {data.languages.filter(l => l.name).map((lang, i) => (
-                          <div key={i} className="flex justify-between text-xs">
+                          <div key={i} className="flex justify-between text-[10px]">
                             <span className="text-gray-300">{lang.name}</span>
-                            <span className="text-teal-400 font-medium">{lang.proficiency}</span>
+                            <span className="text-cyan-500">{lang.proficiency}</span>
                           </div>
                         ))}
                       </div>
@@ -196,58 +179,51 @@ const ResumePreview = ({ data, onClose }: ResumePreviewProps) => {
                   )}
                 </div>
 
-                {/* Main Content Area */}
-                <div className="flex-1 bg-gray-50 p-8">
+                {/* Main Content Area - Expanded Width */}
+                <div className="flex-1 bg-white p-6 text-[11px]">
                   {/* Header with Name and Title */}
-                  <div className="mb-8 pb-6 border-b-2 border-teal-400">
-                    <h1 className="text-4xl font-bold text-slate-800 tracking-tight">{data.fullName}</h1>
-                    <div className="text-teal-600 font-semibold text-lg mt-1 uppercase tracking-wide">
+                  <div className="mb-4 pb-3 border-b-2 border-cyan-700">
+                    <h1 className="text-2xl font-bold text-slate-800 tracking-tight leading-none">{data.fullName}</h1>
+                    <div className="text-cyan-700 font-medium text-sm mt-0.5 uppercase tracking-wide">
                       {data.experience[0]?.title || "Professional"}
                     </div>
                   </div>
 
                   {/* About Me / Summary */}
                   {data.summary && (
-                    <div className="mb-8">
-                      <h2 className="text-lg font-bold text-slate-800 mb-3 flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-lg bg-teal-400 flex items-center justify-center">
-                          <span className="text-white text-sm font-bold">01</span>
-                        </div>
+                    <div className="mb-4">
+                      <h2 className="text-xs font-bold text-slate-800 mb-1.5 uppercase tracking-wide flex items-center gap-2">
+                        <span className="w-1 h-4 bg-cyan-700 rounded-full"></span>
                         About Me
                       </h2>
-                      <p className="text-gray-600 text-sm leading-relaxed pl-[52px]">{data.summary}</p>
+                      <p className="text-gray-600 leading-relaxed">{data.summary}</p>
                     </div>
                   )}
 
                   {/* Work Experience - Timeline Style */}
                   {data.experience.some(e => e.title) && (
-                    <div className="mb-8">
-                      <h2 className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-lg bg-teal-400 flex items-center justify-center">
-                          <span className="text-white text-sm font-bold">02</span>
-                        </div>
+                    <div className="mb-4">
+                      <h2 className="text-xs font-bold text-slate-800 mb-2 uppercase tracking-wide flex items-center gap-2">
+                        <span className="w-1 h-4 bg-cyan-700 rounded-full"></span>
                         Work Experience
                       </h2>
-                      <div className="pl-[52px] relative">
-                        {/* Timeline line */}
-                        <div className="absolute left-[17px] top-0 bottom-0 w-0.5 bg-teal-200"></div>
-                        
+                      <div className="relative pl-3 border-l border-cyan-200">
                         {data.experience.filter(e => e.title).map((exp, i) => (
-                          <div key={i} className="relative mb-6 last:mb-0">
+                          <div key={i} className="relative mb-3 last:mb-0">
                             {/* Timeline dot */}
-                            <div className="absolute -left-[35px] top-1 w-3 h-3 rounded-full bg-teal-400 border-2 border-white shadow-sm"></div>
+                            <div className="absolute -left-[7px] top-0.5 w-2 h-2 rounded-full bg-cyan-700"></div>
                             
-                            <div className="bg-white rounded-lg p-4 shadow-sm border border-gray-100">
-                              <div className="flex justify-between items-start mb-2">
+                            <div className="pl-2">
+                              <div className="flex justify-between items-start gap-2 mb-0.5">
                                 <div>
-                                  <h3 className="font-bold text-slate-800">{exp.title}</h3>
-                                  <div className="text-teal-600 font-medium text-sm">{exp.company}</div>
+                                  <h3 className="font-bold text-slate-800 text-[11px] leading-tight">{exp.title}</h3>
+                                  <div className="text-cyan-700 font-medium text-[10px]">{exp.company}</div>
                                 </div>
-                                <span className="text-xs text-white bg-teal-400 px-3 py-1 rounded-full font-medium">
+                                <span className="text-[9px] text-white bg-cyan-700 px-2 py-0.5 rounded-full font-medium whitespace-nowrap">
                                   {exp.duration}
                                 </span>
                               </div>
-                              <p className="text-sm text-gray-600 leading-relaxed">{exp.description}</p>
+                              <p className="text-gray-600 leading-relaxed">{exp.description}</p>
                             </div>
                           </div>
                         ))}
@@ -257,22 +233,20 @@ const ResumePreview = ({ data, onClose }: ResumePreviewProps) => {
 
                   {/* Projects */}
                   {hasProjects && (
-                    <div className="mb-8">
-                      <h2 className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-lg bg-teal-400 flex items-center justify-center">
-                          <span className="text-white text-sm font-bold">03</span>
-                        </div>
+                    <div className="mb-4">
+                      <h2 className="text-xs font-bold text-slate-800 mb-2 uppercase tracking-wide flex items-center gap-2">
+                        <span className="w-1 h-4 bg-cyan-700 rounded-full"></span>
                         Projects
                       </h2>
-                      <div className="pl-[52px] grid gap-3">
+                      <div className="grid gap-2">
                         {data.projects.filter(p => p.title).map((proj, i) => (
-                          <div key={i} className="bg-white rounded-lg p-4 shadow-sm border border-gray-100">
-                            <h3 className="font-bold text-slate-800 mb-1">{proj.title}</h3>
-                            <p className="text-sm text-gray-600 mb-2">{proj.description}</p>
+                          <div key={i} className="border-l-2 border-cyan-200 pl-2">
+                            <h3 className="font-bold text-slate-800 text-[11px]">{proj.title}</h3>
+                            <p className="text-gray-600 text-[10px] leading-relaxed">{proj.description}</p>
                             {proj.technologies && (
-                              <div className="flex flex-wrap gap-1">
+                              <div className="flex flex-wrap gap-1 mt-1">
                                 {proj.technologies.split(",").map((tech, ti) => (
-                                  <span key={ti} className="px-2 py-0.5 text-xs bg-teal-50 text-teal-600 rounded">
+                                  <span key={ti} className="px-1.5 py-0.5 text-[8px] bg-cyan-50 text-cyan-700 rounded">
                                     {tech.trim()}
                                   </span>
                                 ))}
@@ -286,18 +260,16 @@ const ResumePreview = ({ data, onClose }: ResumePreviewProps) => {
 
                   {/* Achievements */}
                   {hasAchievements && (
-                    <div className="mb-8">
-                      <h2 className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-lg bg-teal-400 flex items-center justify-center">
-                          <span className="text-white text-sm font-bold">04</span>
-                        </div>
+                    <div className="mb-4">
+                      <h2 className="text-xs font-bold text-slate-800 mb-2 uppercase tracking-wide flex items-center gap-2">
+                        <span className="w-1 h-4 bg-cyan-700 rounded-full"></span>
                         Achievements
                       </h2>
-                      <div className="pl-[52px] space-y-2">
+                      <div className="space-y-1">
                         {data.achievements.filter(a => a.title).map((ach, i) => (
-                          <div key={i} className="flex items-start gap-2">
-                            <div className="w-2 h-2 rounded-full bg-teal-400 mt-1.5 flex-shrink-0"></div>
-                            <div>
+                          <div key={i} className="flex items-start gap-1.5">
+                            <div className="w-1 h-1 rounded-full bg-cyan-700 mt-1.5 flex-shrink-0"></div>
+                            <div className="text-[11px]">
                               <span className="font-medium text-slate-800">{ach.title}</span>
                               {ach.description && <span className="text-gray-500"> — {ach.description}</span>}
                             </div>
@@ -310,13 +282,11 @@ const ResumePreview = ({ data, onClose }: ResumePreviewProps) => {
                   {/* Hobbies */}
                   {hasHobbies && (
                     <div>
-                      <h2 className="text-lg font-bold text-slate-800 mb-4 flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-lg bg-teal-400 flex items-center justify-center">
-                          <span className="text-white text-sm font-bold">05</span>
-                        </div>
+                      <h2 className="text-xs font-bold text-slate-800 mb-1.5 uppercase tracking-wide flex items-center gap-2">
+                        <span className="w-1 h-4 bg-cyan-700 rounded-full"></span>
                         Hobbies & Interests
                       </h2>
-                      <p className="text-sm text-gray-600 pl-[52px]">{data.hobbies}</p>
+                      <p className="text-gray-600">{data.hobbies}</p>
                     </div>
                   )}
                 </div>
